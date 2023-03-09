@@ -10,6 +10,8 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded());
 
+require("./resources/User/user.router")(app);
+
 // Connect to the database
 mongoose
     .connect(process.env.MONGO_DB_URI, {
