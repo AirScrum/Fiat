@@ -1,0 +1,26 @@
+{
+  "name": "fiat",
+  "version": "1.0.0",
+  "description": "User Management Service AKA Fiat. A Node.js microservice for managing history, users, and stories endpoints.",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AirScrum/Fiat.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AirScrum/Fiat/issues"
+  },
+  "homepage": "https://github.com/AirScrum/Fiat#readme",
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "mongoose": "^7.0.1",
+    "nodemon": "^2.0.21"
+  }
+}
