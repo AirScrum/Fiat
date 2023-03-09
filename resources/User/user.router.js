@@ -1,8 +1,11 @@
-const { protected } = require('./user.controller')
+const { getProfile,updateProfile } = require('./user.controller')
 
 module.exports = function (app) {
 
-  // Example of protected routes
-  app.get("/protected", protected);
+  // Route to get Profile details
+  app.get("/profile", getProfile);
+
+  // Route to update Profile details
+  app.post("/profile", updateProfile);
   
 };
