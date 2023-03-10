@@ -5,8 +5,7 @@ const UserModel = require("./user.model");
 const updateProfile = (req, res) => {
 
     const userId = req.body.userid;
-    const userDetails = req.body;
-    console.log(userId)
+    const userDetails = req.body.request;
 
     // Find the user by their ID and update their details
     UserModel.findByIdAndUpdate(userId, userDetails, { new: true })
