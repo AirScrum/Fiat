@@ -28,9 +28,6 @@ const userSchema = new Schema({
     title: {
         type: String,
         },
-    companyName: {
-        type: String,
-        },
     address: {
         type: String,
         },
