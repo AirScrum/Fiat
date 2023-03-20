@@ -11,6 +11,7 @@ app.use(express.json());
 app.use(express.urlencoded());
 
 require("./resources/User/user.router")(app);
+require("./resources/UserStory/userStory.router")(app);
 
 // Connect to the database
 mongoose
