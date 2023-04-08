@@ -1,5 +1,6 @@
 // Important requires
 import { User } from "../models/user.model"
+import { crudControllers } from "../utils/CRUD";
 // Function to update Profile details
 export const updateProfile = (req, res,next) => {
 
@@ -24,4 +25,8 @@ export const updateProfile = (req, res,next) => {
             next(error)
         });
 };
-
+const userControllers = (model)=>({
+    updateProfile:updateProfile,
+    ...crudControllers(model)
+})
+export default userControllers(User)

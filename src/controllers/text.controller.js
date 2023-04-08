@@ -1,4 +1,6 @@
 import { Text } from "../models/text.model"
+import { crudControllers } from "../utils/CRUD";
+
 export const getTextsByUserID = async (req, res, next) => {
   console.log('hello')
   try {
@@ -13,3 +15,8 @@ export const getTextsByUserID = async (req, res, next) => {
     next(error)
   }
 };
+const textControllers = (model)=>({
+  getTextsByUserID:getTextsByUserID,
+  ...crudControllers(model)
+})
+export default textControllers(Text)

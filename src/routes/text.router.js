@@ -1,9 +1,9 @@
 import { Router } from "express";
-import { getTextsByUserID } from "../controllers/text.controller";
+import textControllers from "../controllers/text.controller";
 const router = Router();
 
 // api/texts
 
-router.route("/").get(getTextsByUserID);
+router.route("/").get(textControllers.getTextsByUserID);
 
 export default router;
