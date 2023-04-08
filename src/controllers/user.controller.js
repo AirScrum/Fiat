@@ -6,7 +6,9 @@ export const updateProfile = (req, res,next) => {
 
     const userId = req.body.userid;
     const userDetails = req.body.request;
-
+    if(!userId || userDetails){
+        throw new createError[422]('Error no userId/userDetails not found!')
+    }
     // Find the user by their ID and update their details
     User.findByIdAndUpdate(userId, userDetails, { new: true })
         .select("-createdAt -updatedAt -__v -password")
@@ -16,7 +18,7 @@ export const updateProfile = (req, res,next) => {
                 res.send(user);
             } else {
                 // If user is not found, send a 404 response
-                res.status(404).send("User not found");
+                throw new createError[404]("User not found");
             }
         })
         .catch((err) => {
