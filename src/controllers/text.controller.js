@@ -1,13 +1,16 @@
 import { Text } from "../models/text.model"
 import { crudControllers } from "../utils/CRUD";
+import createError from "http-errors";
 
 export const getTextsByUserID = async (req, res, next) => {
-  console.log('hello')
   try {
-    const userId = "63fe5bbb8e02db9f6a63e838";
-    const meetings = await Text.find({ userID: userId }).select("_id");
+    const userID =  req.body.userID;
+    if(!userID){
+      throw new createError[422]('Error no userID not found!')
+    }
+    const meetings = await Text.find({ userID: userID }).select("_id");
     if (!meetings) {
-      return res.status(404).json({ message: "No meetings" });
+      return res.status(404).json({ message: `No meetings found for user id ${userID}` });
     }
     return res.status(200).json({ data: meetings });
   } catch (error) {

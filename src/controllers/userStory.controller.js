@@ -1,20 +1,17 @@
 // Important requires
 import { UserStories } from "../models/userStory.model";
 import { crudControllers } from "../utils/CRUD";
-// Function to get Profile details
-export const getHistory = async (req, res,next) => {
+import createError from "http-errors";
+export const getHistory = async (req, res, next) => {
   try {
-    /*const userId = req.body.userid;
-       if (!userId) {
-           return res.send({
-               message: "User Id not found",
-           });
-       }*/
-    const userId = "63fe5bbb8e02db9f6a63e838";
-    const textID = "64067dfc46d9b5ffe06304ab";
+    const userID =  req.body.userID;
+    const textID =  req.body.textID;
+    if(!userID || !textID){
+      throw new createError[422]('Error no userID/textID not found!')
+    }
     // Find the user story
     const userStories = await UserStories.find({
-      userID: userId,
+      userID: userID,
       textID: textID,
     });
     if (!userStories) {
@@ -26,8 +23,8 @@ export const getHistory = async (req, res,next) => {
     next(error)
   }
 };
-const userStoriesControllers = (model)=>({
-  getHistory:getHistory,
+const userStoriesControllers = (model) => ({
+  getHistory: getHistory,
   ...crudControllers(model)
 })
 export default userStoriesControllers(UserStories)

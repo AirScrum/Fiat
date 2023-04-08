@@ -4,6 +4,6 @@ const router = Router();
 
 // api/texts
 
-router.route("/").get(textControllers.getTextsByUserID);
+router.route("/").post(textControllers.getTextsByUserID);
 
 export default router;
