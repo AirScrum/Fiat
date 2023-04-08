@@ -1,6 +1,6 @@
 // Important requires
 import { UserStories } from "../models/userStory.model";
-import createError from "http-errors";
+import { crudControllers } from "../utils/CRUD";
 // Function to get Profile details
 export const getHistory = async (req, res,next) => {
   try {
@@ -26,3 +26,8 @@ export const getHistory = async (req, res,next) => {
     next(error)
   }
 };
+const userStoriesControllers = (model)=>({
+  getHistory:getHistory,
+  ...crudControllers(model)
+})
+export default userStoriesControllers(UserStories)

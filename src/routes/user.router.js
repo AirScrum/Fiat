@@ -1,10 +1,10 @@
 
 import { Router } from "express";
-import { updateProfile } from "../controllers/user.controller";
+import userControllers from "../controllers/user.controller";
 const router = Router();
 
 // api/users/profile
 
-router.route("/profile").post(updateProfile);
+router.route("/profile").post(userControllers.updateProfile);
 
 export default router;
