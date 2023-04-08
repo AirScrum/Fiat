@@ -1,8 +1,8 @@
 // Important requires
 import { UserStories } from "../models/userStory.model";
-
+import createError from "http-errors";
 // Function to get Profile details
-export const getHistory = async (req, res) => {
+export const getHistory = async (req, res,next) => {
   try {
     /*const userId = req.body.userid;
        if (!userId) {
@@ -23,6 +23,6 @@ export const getHistory = async (req, res) => {
     return res.status(200).json({ data: userStories });
   } catch (error) {
     console.error(error);
-    res.status(400).send("Error receiving user stories `history details");
+    next(error)
   }
 };

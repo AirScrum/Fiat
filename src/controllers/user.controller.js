@@ -1,7 +1,7 @@
 // Important requires
-import {User} from "../models/user.model"
+import { User } from "../models/user.model"
 // Function to update Profile details
-export const updateProfile = (req, res) => {
+export const updateProfile = (req, res,next) => {
 
     const userId = req.body.userid;
     const userDetails = req.body.request;
@@ -10,7 +10,6 @@ export const updateProfile = (req, res) => {
     User.findByIdAndUpdate(userId, userDetails, { new: true })
         .select("-createdAt -updatedAt -__v -password")
         .then((user) => {
-
             if (user) {
                 // If user is found and updated, send the updated details back in response
                 res.send(user);
@@ -22,7 +21,7 @@ export const updateProfile = (req, res) => {
         .catch((err) => {
             // Handle error
             console.error(err);
-            res.status(500).send("Error updating user details");
+            next(error)
         });
 };
 
