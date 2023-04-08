@@ -1,14 +1,13 @@
 // Important requires
-const UserModel = require("./user.model");
-
+import {User} from "../models/user.model"
 // Function to update Profile details
-const updateProfile = (req, res) => {
+export const updateProfile = (req, res) => {
 
     const userId = req.body.userid;
     const userDetails = req.body.request;
 
     // Find the user by their ID and update their details
-    UserModel.findByIdAndUpdate(userId, userDetails, { new: true })
+    User.findByIdAndUpdate(userId, userDetails, { new: true })
         .select("-createdAt -updatedAt -__v -password")
         .then((user) => {
 
@@ -27,4 +26,3 @@ const updateProfile = (req, res) => {
         });
 };
 
-module.exports = { updateProfile };
