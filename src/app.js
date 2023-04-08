@@ -6,6 +6,7 @@ import { connect } from "mongoose";
 import textRouter from "./routes/text.router";
 import userRouter from "./routes/user.router"
 import userStoryRouter from "./routes/userStory.router"
+import { errorHandler } from "./middlewares/ErrorHandler";
 import morgan from "morgan";
 // Instances
 const app = express();
@@ -26,6 +27,8 @@ app.use(USER_STORIES_ROUTER,userStoryRouter)
 app.use('/ping', (req,res,next)=>{
   res.status(200).json({message:'Pong'})
 })
+// Error Handler
+app.use(errorHandler)
 // Connect to the database
 connect(process.env.MONGO_DB_URI, {
     useNewUrlParser: true,
@@ -36,10 +39,3 @@ connect(process.env.MONGO_DB_URI, {
     console.log(`Fiat Service - listening on port ${process.env.PORT}`);
   })
   .catch((err) => console.log(err));
-
-// // Transform from speech to text
-// app.get("/", (req, res) => {
-//   return res.status(200).send({
-//     success: true,
-//   });
-// });

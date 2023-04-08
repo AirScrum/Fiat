@@ -10,6 +10,6 @@ export const getTextsByUserID = async (req, res, next) => {
     return res.status(200).json({ data: meetings });
   } catch (error) {
     console.error(error);
-    res.status(400).send("Error receiving meetings` history details");
+    next(error)
   }
 };
