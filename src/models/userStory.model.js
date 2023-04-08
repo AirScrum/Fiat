@@ -19,4 +19,4 @@ const UserStoriesSchema = new mongoose.Schema({
   }
 }, { timestamps: true , collection: 'userStories'});
 
-module.exports = mongoose.model('UserStories', UserStoriesSchema);
+export const UserStories= mongoose.model('UserStories', UserStoriesSchema);

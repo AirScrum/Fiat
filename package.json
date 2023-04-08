@@ -4,8 +4,11 @@
   "description": "User Management Service AKA Fiat. A Node.js microservice for managing history, users, and stories endpoints.",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon app.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "babel src --out-dir dist",
+    "dev": "nodemon --exec npm run restart",
+    "restart": "rimraf dist && npm run build && npm run start",
+    "start": "node dist/app.js"
   },
   "repository": {
     "type": "git",
@@ -21,6 +24,16 @@
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "mongoose": "^7.0.1",
-    "nodemon": "^2.0.21"
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.21.0",
+    "@babel/core": "^7.21.4",
+    "@babel/plugin-proposal-class-properties": "^7.18.6",
+    "@babel/plugin-proposal-object-rest-spread": "^7.20.7",
+    "@babel/preset-env": "^7.21.4",
+    "babel-core": "^6.26.3",
+    "nodemon": "^2.0.22",
+    "rimraf": "^4.4.1"
   }
 }
