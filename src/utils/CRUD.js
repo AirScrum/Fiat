@@ -45,6 +45,7 @@ export const getAll = (model) => async (req, res) => {
 export const getOne = (model) => async (req, res) => {
     try {
         const id = req.params.id;
+        console.log(id)
         const doc = await model.findOne({ _id: id }).lean().exec();
         if (!doc) {
             return res.status(404).end();
