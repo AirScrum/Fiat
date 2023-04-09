@@ -9,6 +9,7 @@ const router = Router();
 router.route("/:id")
 .put(userStoriesControllers.updateOne)
 .delete(userStoriesControllers.removeOne)
+.get(userStoriesControllers.getOne)
 /**
  * Get userStories by meetingID && userID
  */

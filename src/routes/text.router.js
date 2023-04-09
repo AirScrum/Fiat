@@ -10,5 +10,11 @@ router.route("/").post(textControllers.getTextsByUserID);
 /**
  * Delete meeting by ID
  */
-router.route("/:id").delete(textControllers.removeOne)
+router.route("/:id").delete(textControllers.removeOne).get(textControllers.getOne)
+
+/**
+ * Create a meeting by userID
+ * (For testing purposes)
+ */
+router.route("/meeting").post(textControllers.createOne)
 export default router;
