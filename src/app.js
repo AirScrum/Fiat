@@ -17,7 +17,7 @@ const USER_STORIES_ROUTER = "/api/userstories"
 // Middlewares
 app.use(json());
 app.use(urlencoded());
-app.use(morgan("dev")); //Logging
+app.use(morgan("combined")); //Logging
 
 // require("./resources/UserStory/userStory.router")(app);
 // Routes
