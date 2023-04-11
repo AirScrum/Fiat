@@ -8,7 +8,7 @@ export const getTextsByUserID = async (req, res, next) => {
     if(!userID){
       throw new createError[422]('Error no userID not found!')
     }
-    const meetings = await Text.find({ userID: userID }).select("_id");
+    const meetings = await Text.find({ userID: userID },{textContent:0})
     if (!meetings) {
       return res.status(404).json({ message: `No meetings found for user id ${userID}` });
     }
