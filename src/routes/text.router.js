@@ -9,12 +9,13 @@ const router = Router();
 router.route("/").post(textControllers.getTextsByUserID);
 /**
  * Delete meeting by ID
+ * Get meeting metadata by ID
  */
-router.route("/:id").delete(textControllers.removeOne).get(textControllers.getOne)
+router.route("/:id").delete(textControllers.removeOne).post(textControllers.getTextByMeetingID);
 
 /**
  * Create a meeting by userID
  * (For testing purposes)
  */
-router.route("/meeting").post(textControllers.createOne)
+router.route("/meeting").post(textControllers.createOne);
 export default router;
