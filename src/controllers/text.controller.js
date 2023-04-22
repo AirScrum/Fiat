@@ -28,7 +28,7 @@ export const getTextByMeetingID = async (req, res, next) => {
         if (!meetingID) {
             throw new createError[422]("Error no meetingID not found!");
         }
-        const meetings = await Text.find({ userID: userID, meetingID: meetingID }, { textContent: 0 });
+        const meetings = await Text.findOne({ userID: userID, _id: meetingID }, { textContent: 0 });
         if (!meetings) {
             return res.status(404).json({ message: `No meetings found for user id ${userID}` });
         }
