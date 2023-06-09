@@ -11,11 +11,16 @@ router.route("/").post(textControllers.getTextsByUserID);
  * Delete meeting by ID
  * Get meeting metadata by ID
  */
-router.route("/:id").delete(textControllers.removeOne).post(textControllers.getTextByMeetingID);
+router.route("/id/:id").delete(textControllers.removeOne).post(textControllers.getTextByMeetingID);
 
 /**
  * Create a meeting by userID
  * (For testing purposes)
  */
 router.route("/meeting").post(textControllers.createOne);
+
+/**
+ * Searching for meetings by ID
+ */
+router.route("/search").post(textControllers.getTextsByIDRegex);
 export default router;
